@@ -4,7 +4,7 @@ const sequelize = require('../config/connections');
 
 const projectdata = [
   {
-    project_name: 'Making sure cats really meow',
+    project_name: 'Making Sure Cats Really Meow',
     subject: 'Science',
     ongoing_status: true,
     abstract: "Do cats really go meow?!",
@@ -23,7 +23,6 @@ const projectdata = [
     user_id: 1,
 
   },
-
   {
     project_name: 'I love cats!',
     abstract: 'They are the best',
