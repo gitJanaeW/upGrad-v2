@@ -2,10 +2,6 @@ const router = require("express").Router();
 const { User, Project } = require("../../models");
 const authLogin = require("../../utils/auth");
 const getWhereObj = require('../../utils/projectQueryObj');
-// const filterLogin = require('../../public/js/filterProject');
-
-// fetch(`api/projects?subject=math?inst=Carleton?`)
-
 
 // get all projects (shown from newest to oldest)
 router.get("/", authLogin, (req, res) => {
@@ -28,7 +24,7 @@ router.get("/", authLogin, (req, res) => {
     // newest posts will show first based on id number
     order: [["id", "ASC"]],
   })
-    .then((allProjects) => res.render('dashboard', { allProjects }))
+    .then((allProjects) => res.render('home', { allProjects }))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
