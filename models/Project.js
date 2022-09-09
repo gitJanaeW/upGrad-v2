@@ -50,13 +50,7 @@ Project.init(
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: "",
-    },
-    // createdAt: {
-    //     type: 'TIMESTAMP',
-    //     defaultValue: sequelize.literal(
-    //         "TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP"
-    //     ),
-    // }
+    }
   },
   {
     sequelize,

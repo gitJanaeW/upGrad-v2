@@ -11,9 +11,20 @@ const getWhereObj = require('../../utils/projectQueryObj');
 router.get("/", authLogin, (req, res) => {
   console.log(req.body);
   Project.findAll({
-    // attributes: {
-    //     include: [['created_at']]
-    // },
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'body', 'user_id', 'project_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['username']
+        }
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ],
     // newest posts will show first based on id number
     order: [["id", "ASC"]],
   })

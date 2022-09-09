@@ -1,7 +1,7 @@
 // const router = require('../controllers');
 const Project = require('./Project');
 const User = require('./User');
-const Model = require('./Comment');
+const Comment = require('./Comment');
 
 // create associations
 User.hasMany(Project, {
@@ -19,7 +19,7 @@ Comment.belongsTo(User, {
     onDelete: 'SET NULL'
 });
 
-Comment.belongsTo(Post, {
+Comment.belongsTo(Project, {
     foreignKey: 'post_id',
     onDelete: 'SET NULL'
 });
@@ -29,7 +29,7 @@ User.hasMany(Comment, {
     onDelete: 'SET NULL'
 });
 
-Post.hasMany(Comment, {
+Project.hasMany(Comment, {
     foreignKey: 'post_id'
 });
 
