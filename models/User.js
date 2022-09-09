@@ -20,10 +20,6 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: "",
-      // references: {
-      //     model: 'user',
-      //     key: 'id'
-      // }
     },
     email: {
       type: DataTypes.STRING,
