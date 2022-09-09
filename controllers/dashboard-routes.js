@@ -4,7 +4,7 @@ const { User, Project } = require("../models");
 const authLogin = require("../utils/auth");
 
 //display all projects user has
-router.get("/profile", authLogin, (req, res) => {
+router.get("/", authLogin, (req, res) => {
   User.findOne({
     // respond with all attributes of user except password
     attributes: {
@@ -62,10 +62,9 @@ router.get("/edit/:id", authLogin, (req, res) => {
         return;
       }
       const project = projectData.get({ plain: true });
-      // use the data from the response + loggedIn status to render edit-project.handlebars
+      // use the data from the response to render edit-project.handlebars
       res.render("edit-project", {
-        project,
-        // loggedIn: req.session.loggedIn
+        project
       });
     })
     .catch((err) => {

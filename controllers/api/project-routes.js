@@ -30,6 +30,7 @@ router.get("/", authLogin, (req, res) => {
       res.status(500).json(err);
     });
 });
+
 // get a single project
 router.get("/:id", authLogin, (req, res) => {
   Project.findOne({
@@ -59,9 +60,7 @@ router.post("/", (req, res) => {
     ongoing_status: req.body.ongoing_status,
   })
     .then((newProjectData) => {
-      console.log('hi')
-      console.log(newProjectData)
-      res.json(newProjectData)
+      res.json(newProjectData);
 
     })
     .catch((err) => {
