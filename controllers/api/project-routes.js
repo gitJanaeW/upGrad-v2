@@ -1,10 +1,9 @@
 const router = require("express").Router();
-const { User, Project } = require("../../models");
+const { User, Project, Comment } = require("../../models");
 const authLogin = require("../../utils/auth");
-const getWhereObj = require('../../utils/projectQueryObj');
 
 // get all projects (shown from newest to oldest)
-router.get("/", authLogin, (req, res) => {
+router.get("/", (req, res) => {
   console.log(req.body);
   Project.findAll({
     include: [
@@ -13,18 +12,18 @@ router.get("/", authLogin, (req, res) => {
         attributes: ['id', 'body', 'user_id', 'project_id', 'created_at'],
         include: {
           model: User,
-          attributes: ['username']
+          attributes: ['name']
         }
       },
       {
         model: User,
-        attributes: ['username']
+        attributes: ['name']
       }
     ],
     // newest posts will show first based on id number
     order: [["id", "ASC"]],
   })
-    .then((allProjects) => res.render('home', { allProjects }))
+    .then((allProjects) => res.json(allProjects))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);
@@ -32,16 +31,27 @@ router.get("/", authLogin, (req, res) => {
 });
 
 // get a single project
-router.get("/:id", authLogin, (req, res) => {
+router.get("/:id", (req, res) => {
   Project.findOne({
-    // attributes: {
-    //     include: [['created_at']]
-    // },
     where: {
       id: req.params.id,
     },
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'body', 'user_id', 'project_id', 'created_at'],
+        include: {
+          model: User,
+          attributes: ['name']
+        }
+      },
+      {
+        model: User,
+        attributes: ['name']
+      }
+    ]
   })
-    .then((projectData) => res.json(projectData))
+    .then((project) => res.render('project', {project}))
     .catch((err) => {
       console.log(err);
       res.status(500).json(err);

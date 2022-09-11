@@ -61,6 +61,9 @@ router.get("/search", authLogin, (req, res) => {
 // display a specific project on its own page
 router.get("project/:id", authLogin, (req, res) => {
   Project.findOne({
+    where: {
+      id: req.params.id
+    },
     include: [
       {
         model: User,
@@ -74,9 +77,9 @@ router.get("project/:id", authLogin, (req, res) => {
         return;
       }
       // this formats the data Sequelize gives us in a readable format
-      const project = projectData.get({ plain: true });
-      // use the data from the response to render project-view.handlebars
-      res.render("project-view", { project });
+      const project = projectData.get({plain: true});
+      // use the data from the response to render project.handlebars
+      res.render("project", { project });
     })
     .catch((err) => {
       console.log(err);
