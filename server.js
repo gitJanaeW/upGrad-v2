@@ -7,6 +7,7 @@ const sequelize = require("./config/connections");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 // const helpers = require('./utils/helpers');
 const routes = require("./controllers/");
+var bodyParser = require("body-parser");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -26,6 +27,12 @@ app.use(session(sess));
 
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
+
+
+
+
+//app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

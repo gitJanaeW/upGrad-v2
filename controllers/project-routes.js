@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const { User, Project, Comment } = require("../../models");
-const authLogin = require("../../utils/auth");
+const { User, Project, Comment } = require("../models");
+const authLogin = require("../utils/auth");
 
 // get all projects (shown from newest to oldest)
 router.get("/", (req, res) => {
@@ -31,7 +31,7 @@ router.get("/", (req, res) => {
 });
 
 // get a single project
-router.get("/:id", (req, res) => {
+router.get("/:id", authLogin, (req, res) => {
   Project.findOne({
     where: {
       id: req.params.id,
