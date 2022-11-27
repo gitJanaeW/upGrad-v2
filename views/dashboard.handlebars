@@ -29,11 +29,11 @@
             </div>
         </form>
     </div>
-    <div>
+    <div class="d-flex flex-column-reverse">
         {{#each allProjects}}
         <a class="text-decoration-none text-dark" href="/project/{{id}}">
             <div class="card my-3 p-3">
-                <h4>{{project_name}}</h4>
+                <h4>{{project_name}} ➔</h4>
                 <p class="my-0">
                     <span class="badge bg-secondary my-1 my-md-0">{{subject}}</span>
                     <span class="badge bg-secondary my-1 my-md-0">Ongoing Status: {{ongoing_status}}</span>
@@ -44,9 +44,6 @@
                 </p>
                 <h6 class="card-subtitle mb-2 text-muted">{{user.institution}}</h6>
                 <p>{{abstract}}</p>
-                {{!-- <h6>
-                    <a class="text-decoration-none text-dark" href="{{project_url}}">Read Paper</a>
-                </h6> --}}
             </div>
         </a>
         {{/each}}

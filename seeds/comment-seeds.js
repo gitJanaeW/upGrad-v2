@@ -26,7 +26,42 @@ const commentData = [
         body: 'Seems legit',
         user_id: 5,
         project_id: 3
-    }
+    },
+    {
+        body: 'Just do your readings, John...',
+        user_id: 5,
+        project_id: 4
+    },
+    {
+        body: "I'm going to guess it's A LOT of licks!",
+        user_id: 5,
+        project_id: 5
+    },
+    {
+        body: 'I would love to collaborate with you on this.',
+        user_id: 1,
+        project_id: 4
+    },
+    {
+        body: 'But I love media queries!',
+        user_id: 5,
+        project_id: 7
+    },
+    {
+        body: "I feel like there aren't enough elephants.",
+        user_id: 5,
+        project_id: 8
+    },
+    {
+        body: "You're off to a great start! I would love to collaborate with you.",
+        user_id: 5,
+        project_id: 9
+    },
+    {
+        body: 'Why?',
+        user_id: 5,
+        project_id: 6
+    },
 ];
 
 const seedComments = () => Comment.bulkCreate(commentData);
