@@ -31,9 +31,9 @@ Project.init(
       defaultValue: "",
     },
     collab_status: {
-      type: DataTypes.STRING,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: "",
+      defaultValue: false
     },
     project_url: {
       type: DataTypes.STRING,
@@ -47,9 +47,9 @@ Project.init(
       allowNull: false,
     },
     ongoing_status: {
-      type: DataTypes.STRING,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: "",
+      defaultValue: false,
     },
     // createdAt: {
     //     type: 'TIMESTAMP',
